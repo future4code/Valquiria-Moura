@@ -1,0 +1,10 @@
+Fiz toda a sequência introdutória e não sabia que precisava escrever em .txt os comandos.
+
+Depois salvei as aulas da semana passada no github com muita dificuldade.
+
+E travei no 1 do Acelerando onde fala do HEAD.
+
+HEAD - commit atualmente ativo (que sofreu checkout por último).
+
+Soltar o HEAD - anexá-lo a um commit em vez de anexá-lo a um ramo.
+
