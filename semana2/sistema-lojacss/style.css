@@ -1,0 +1,135 @@
+* {
+  margin: 0%;
+  padding: 0%;
+}
+
+#logoEstelarte {
+  display: inline;
+  margin: 2% 1% 0% 5%;
+}
+
+#tituloPagInicial {
+  display: inline;
+  color: rgb(177,139,191);
+  font-family: 'Pinyon Script', cursive;
+  font-size: 500%;
+  
+}
+
+#boasVindas {
+  margin: 3% 32% 5% 15%; 
+  font-size: 120%;
+  font-family: 'Poiret One', cursive;
+  color: rgb(177,139,191);
+}
+
+#chamaEstoque {
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 2%;
+  border: groove;
+  background-color: rgb(197,160,203); 
+  color: white;
+  margin: 5% 4% 0% 15%
+}
+
+#chamaProduto {
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 2%;
+  border: groove;
+  background-color: rgb(197,160,203); 
+  color: white;
+  margin: 5% 2% 0% 3%
+}
+
+#chamaFuncionarios {
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 2%;
+  border: groove;
+  background-color: rgb(197,160,203); 
+  color: white;
+  margin: 5% 10% 0% 5%
+}
+
+h3 {
+  font-family: Arial, Helvetica, sans-serif;
+  color: rgb(177,139,191);
+  font-size: 200%;
+  margin: 5% 10% 5% 30%
+}
+
+#tabelaEstoque {
+  margin: 5% 10% 5% 21%
+}
+
+th {
+  font-family: Arial, Helvetica, sans-serif;
+  color: rgb(177,139,191);
+  font-size: 130%;
+  padding: 2%;
+}
+
+td {
+  text-align: center;
+  vertical-align: middle;
+  font-family: Arial, Helvetica, sans-serif;
+  color: rgb(177,139,191);
+  font-size: 130%;
+}
+
+.negritos {
+  font-weight: bold;
+}
+
+.voltar {
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 1%;
+  border: groove;
+  background-color: rgb(197,160,203); 
+  color: white;
+  margin: 0% 10% 5% 60%
+}
+
+#tabelaFuncionarios {
+  margin: 5% 10% 5% 30%
+}
+
+#addProdutos {
+  margin: 5% 10% 0% 29%
+}
+
+label {
+  color: rgb(177,139,191);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 130%;
+  margin: 5%;
+}
+input {
+  color: rgb(177,139,191);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 100%;
+}
+
+#produto{
+  margin-left: 4%;
+}
+
+#descricao {
+  margin-left: 2%;
+}
+
+#preco {
+  margin-left: 6%;
+}
+
+#quantidade {
+  margin-right: 55%;
+}
+
+button {
+  border: groove;
+  background-color: rgb(197,160,203); 
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 1%;
+  margin: 5% 10% 5% 35%
+}
