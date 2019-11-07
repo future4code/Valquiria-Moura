@@ -148,3 +148,8 @@ td button:hover {
 td {
     text-align: center;
 }
+
+.imgItens {
+    width: 15px;
+    height: 15px;
+}
