@@ -161,3 +161,10 @@ td {
 #back-button:active {
     color: white;
 }
+
+#texto {
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    border-bottom: 5px solid black;
+}
