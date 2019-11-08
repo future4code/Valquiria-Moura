@@ -1,0 +1,156 @@
+/**PADRÃO**/
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: whitesmoke;
+}
+
+#tituloPadrao {
+    color: #EFA48B;
+    font-family: 'Great Vibes', cursive;
+    font-size: 350%;
+    text-align: center;
+}
+
+#profPadrao {
+    color: #FCC8B2;
+    font-family: 'Roboto', sans-serif;
+    font-size: 100%;
+    text-align: center;
+}
+
+#divPadrao {
+    width: 500px;
+    margin: 3% auto;
+}
+
+.botaoMenu {
+    background-color: rgba(252, 200, 178, 0.699);
+    color: rgb(241, 157, 128);
+    width: 110px;
+    height: 40px;
+    border-radius: 5px;
+    font-size: 15px;
+}
+
+.botaoMenu:active {
+    background-color: rgb(241, 157, 128);
+    color: rgba(252, 200, 178, 0.699);
+}
+
+#divMenu {
+    width: 700px;
+    margin: auto;
+}
+
+.titulosPadrao {
+    color: #EFA48B;
+    font-family: 'Roboto', sans-serif;
+    font-size: 170%;
+    text-align: right;
+    margin: 2% 29% 1% 0%;
+}
+
+
+/**HOME**/
+
+#tituloHome {
+    color: #EFA48B;
+    font-family: 'Great Vibes', cursive;
+    font-size: 700%;
+    text-align: center;
+}
+
+#profHome {
+    color: #FCC8B2;
+    font-family: 'Roboto', sans-serif;
+    font-size: 200%;
+    text-align: center;
+}
+
+#divHome {
+    width: 700px;
+    margin: 5% auto;
+}
+
+.botaoHome {
+    background-color: rgba(252, 200, 178, 0.699);
+    color: rgb(241, 157, 128);
+    width: 200px;
+    height: 50px;
+    display: block;
+    margin: 10px auto;
+    border-radius: 5px;
+    font-size: 20px;
+}
+
+.botaoHome:active {
+    background-color: rgb(241, 157, 128);
+    color: rgba(252, 200, 178, 0.699);
+}
+
+
+/** QUEM SOU EU **/
+
+#avatar {
+    margin: 1% 0% 2% 27%;
+}
+
+#textoQuemSouEu {
+    color: grey;
+    font-family: 'Roboto', sans-serif;
+    font-size: 120%;
+    text-align: right;
+    margin: 0% 29% 1% 0%;
+    position: fixed;
+    top: 43%;
+    left: 45%;
+    bottom: 2%;
+}
+
+
+/** PORTFOLIO**/
+
+.portfolio {
+    border: 1px solid;
+    border-color: rgb(241, 157, 128);
+    width: 150px;
+    height: 150px;
+    margin: 2%;
+}
+
+#divPortfolio {
+    width: 550px;
+    margin: auto;
+}
+
+
+/**PORTFOLIO DEFAULT**/
+
+#aguarde {
+    width: 200px;
+    height: 200px;
+    margin: 5% auto;
+    display: block;
+}
+
+
+/**ESTELARTE**/
+
+#portfolio1 {
+    width: 500px;
+    height: 250px;
+    margin: 2% auto;
+    display: block;
+}
+
+#textoEstelarte {
+    color: grey;
+    font-family: 'Roboto', sans-serif;
+    font-size: 120%;
+    text-align: center;
+}
