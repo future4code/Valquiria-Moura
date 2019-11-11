@@ -1,0 +1,33 @@
+div {
+    border: 2px solid #313B3E;
+    border-radius: 10px;
+}
+
+.container {
+    max-width: 600px;
+    background-color: #A8BBC6;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-evenly;
+}
+
+.item {
+    background-color: #EEEEEE;
+}
+
+#item1 {
+    width: 100px;
+}
+
+#item2 {
+    width: 80px;
+    height: 80px;
+    align-self: flex-start;
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+#item3 {
+    height: 300px;
+    align-self: end;
+}
