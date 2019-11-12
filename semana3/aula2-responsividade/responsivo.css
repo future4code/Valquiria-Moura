@@ -1,0 +1,194 @@
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    
+    #maincontainer {
+        width: 1024px;
+        height: 1150px;
+        border: 1px solid black;
+    }
+    
+    #blocoRed {
+        background-color: red;
+        color: red;
+        height: 5em;
+    }
+    
+    .container1 {
+        width: 1024px;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+    
+    .blocoRetangularBlue {
+        border: 1px solid black;
+        height: 10em;
+        width: 20em;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 1% 0;
+        background-color: blue;
+    }
+    
+    .blocoRetangularYellow {
+        border: 1px solid black;
+        height: 10em;
+        width: 20em;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 1% 0;
+        background-color: yellow;
+    }
+    
+    .blocoRetangularGreen {
+        border: 1px solid black;
+        height: 10em;
+        width: 20em;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 1% 0;
+        background-color: green;
+    }
+    
+    .blocoRetangularWhite1 {
+        border: 1px solid black;
+        height: 10em;
+        width: 20em;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 1% 0;
+        background-color: white;
+    }
+    
+    #blocoRetangularWhite2 {
+        border: 1px solid black;
+        height: 10em;
+        width: 20em;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 1% 0;
+        background-color: white;
+    }
+    
+    .blocoQuadrado {
+        border: 1px solid black;
+        height: 30em;
+        width: 30em;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 1% 0;
+        background-color: black;
+        color: white;
+    }
+    
+    #container2 {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+    
+    @media screen and (min-device-width:500px) and (max-device-width:700px) {
+        #maincontainer {
+            width: 480px;
+            height: 950px;
+        }
+        #blocoRed {
+            background-color: red;
+            color: red;
+            height: 3em;
+        }
+        .container1 {
+            width: 500px;
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-start;
+            margin: 2%;
+        }
+        .blocoRetangularBlue {
+            height: 5em;
+            width: 13em;
+            margin: 2%;
+        }
+        .blocoRetangularYellow {
+            height: 5em;
+            width: 13em;
+            margin: 2%;
+        }
+        .blocoRetangularGreen {
+            height: 5em;
+            width: 27em;
+            margin: 2%;
+            justify-self: center;
+        }
+        .blocoQuadrado {
+            height: 12em;
+            width: 12em;
+        }
+        .blocoRetangularWhite1 {
+            height: 5em;
+            width: 13em;
+            margin: 2%;
+            justify-self: center;
+        }
+        #blocoRetangularWhite2 {
+            height: 5em;
+            width: 27em;
+            margin: 2%;
+            justify-self: center;
+        }
+    }
+    
+    @media screen and (max-width:499px) {
+        #maincontainer {
+            width: 220px;
+            height: 470px;
+        }
+        #blocoRed {
+            background-color: red;
+            color: red;
+            height: 2em;
+        }
+        .container1 {
+            width: 200px;
+            justify-content: center;
+        }
+        .blocoRetangularBlue {
+            height: 2em;
+            width: 12em;
+        }
+        .blocoRetangularYellow {
+            height: 2em;
+            width: 12em;
+        }
+        .blocoRetangularGreen {
+            height: 2em;
+            width: 12em;
+        }
+        .blocoQuadrado {
+            height: 2em;
+            width: 12em;
+        }
+        .blocoRetangularWhite1 {
+            height: 2em;
+            width: 12em;
+        }
+        #blocoRetangularWhite2 {
+            height: 2em;
+            width: 12em;
+        }
+        #container2 {
+            justify-content: flex-start;
+            align-items: flex-start;
+            margin: 2%;
+        }
+    }
