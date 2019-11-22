@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="script.js" defer>
+    </script>
+    <title>Controlador de Despesas</title>
+</head>
+
+<body>
+    <header>
+        <h1>Controlador de Despesas</h1>
+    </header>
+    <!-- Div pra usar flexbox -->
+    <div id="main-container">
+
+        <!-- Seção para Cadastro -->
+        <section id="secaoCadastro">
+            <h3>Cadastrar despesa</h3>
+            <br> <br>
+            <form id="formCadastro" action="#">
+
+                <!-- Campo Valor -->
+                <label for="valor"> Valor (apenas n° inteiro): </label>
+                <input type="number" name="valor" id="valor">
+                <br> <br> <br>
+
+                <!-- Campo Tipo -->
+                <label for="tipoCadastro"> Tipo: </label>
+                <select name="tipoCadastro" id="tipoCadastro">
+                    <option value="casa">Casa</option>
+                    <option value="festas">Festas</option>
+                    <option value="viagem">Viagem</option>
+                    <option value="alimentacao">Alimentação</option>
+                    <option value="transporte">Transporte</option>
+                    <option value="outros">Outros</option>
+                  </select>
+                <br> <br> <br>
+
+                <!-- Campo Descrição -->
+                <label for="descricao"> Descrição </label>
+                <input type="text" name="descricao" id="descricao">
+                <br> <br> <br>
+
+                <!-- Botão -->
+                <button onclick="botaoCadastrar()"> Cadastrar Despesa </button>
+                <br> <br>
+            </form>
+        </section>
+
+        <!-- Seção para Despesas -->
+        <section id="secaoDespesas">
+            <h3>Despesas detalhadas</h3>
+            <br> <br>
+            <form id="formDespesas" action="#">
+
+                <!-- Campo Tipo -->
+                <label for="tipoDespesas"> Tipo: </label>
+                <select name="tipoDespesas" id="tipoDespesas">
+                        <option value="casa">Casa</option>
+                        <option value="festas">Festas</option>
+                        <option value="viagem">Viagem</option>
+                        <option value="alimentacao">Alimentação</option>
+                        <option value="transporte">Transporte</option>
+                        <option value="outros">Outros</option>
+                      </select>
+                <br> <br> <br>
+
+                <!-- Campo Valor Mínimo -->
+                <label for="valorMin"> Valor Mínimo (apenas n° inteiro): </label>
+                <input type="number" name="valorMin" id="valorMin">
+                <br> <br> <br>
+
+                <!-- Campo Valor Máximo -->
+                <label for="valorMax"> Valor Máximo (apenas n° inteiro): </label>
+                <input type="number" name="valorMax" id="valorMax">
+                <br> <br>
+
+                <!-- Botões -->
+                <button onclick="botaoFiltrar()"> Filtrar </button>
+                <button onclick="botaoLimpar()"> Limpar filtro </button>
+            </form>
+        </section>
+    </div>
+
+    <!-- Div para criação de lista quando clicar no botão filtrar -->
+    <div id="containerLista">
+
+    </div>
+</body>
+
+</html>

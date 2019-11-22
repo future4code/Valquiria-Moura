@@ -1,0 +1,16 @@
+#main-container {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#secaoCadastro {
+    border: 1px solid orange;
+    width: 33%;
+    text-align: center;
+}
+
+#secaoDespesas {
+    border: 1px solid orange;
+    width: 33%;
+    text-align: center;
+}
