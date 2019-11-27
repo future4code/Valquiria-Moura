@@ -1,0 +1,19 @@
+.App {
+  margin: 2%;
+  display: grid;
+  justify-items: center;
+  grid-template-rows: 2fr 2fr 2fr;
+}
+
+.Section {
+  width: 500px;
+  height: 500px;
+  border: 1px solid grey;
+  margin: 1%;
+}
+
+
+.Interacao {
+  display: flex;
+  justify-content: space-between;
+}
