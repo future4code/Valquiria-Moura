@@ -5,11 +5,14 @@ import Images from './components/Images/Images.js';
 import Interacao from './components/Interacao/Interacao.js';
 import curtir from './components/icones/favorite-white.svg';
 import comentario from './components/icones/comment_icon.svg';
-
+import Formulario from './components/Formulario/Formulario.js';
 
 function App() {
   return (
     <div className="App">
+        <section>
+        <Formulario></Formulario>
+        </section>
         
         <section className="Section">
         <PageSection conta="future4.br"/>
