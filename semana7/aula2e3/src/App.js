@@ -1,48 +1,48 @@
 import React from 'react';
-import './App.css';
+import Cadastro from './components/Cadastro';
+import Lista from './components/Lista';
 import styled from 'styled-components';
 
-const MainContainer = styled.div`
-  margin: 5%;
-  padding: 0;
-  display:flex;
-  justify-content: center;
-  height: 65vh;
+const ParaAcertarBotao = styled.div`
+display: flex;
+flex-direction: column;
+margin: 5px;
+align-items: center;
 `;
 
-const EstiloDiv = styled.div`
-  border: 1px solid black;
-  margin: 1%;
-  padding: 1%;
-  width: 280px;
-  height: 252px;
+const EstiloBotao  = styled.button`
+background-color: orange;
+color: white;
+width: 150px;
 `;
 
-function App() {
-  return (
-    <div className="App">
-      <MainContainer>
-        <EstiloDiv>
-        <label for="nome">
-            Nome:
-        </label> <br/><br/>
-        <input 
-            type="text"
-            name="nome"
-            id="nome"/> <br/><br/>
-        <label for="email">
-            E-mail:
-        </label> <br/><br/>
-        <input 
-            type="text"
-            name="email"
-            id="email"/> <br/><br/>
-        <button> Salvar </button> <br/> <br/>
-        <button> Ir para a página de lista </button> <br/>
-        </EstiloDiv>
-        </MainContainer>
-    </div>
+class App extends React.Component {
+  constructor(props) {
+    super (props);
+    this.state = {
+      tela: "cadastro"
+    };
+  }
+
+  checagem = () => {
+    if (this.state.tela === "cadastro") {
+      this.setState({tela: "lista"});
+    } else {
+      this.setState({tela: "cadastro"});
+    }
+  };
+
+  render() {
+    const tipoBotao = this.state.tela === "cadastro" ? "Ir para Lista" : "Ir para Cadastro";
+  
+    return (
+    <ParaAcertarBotao>
+      
+      {this.state.tela === "cadastro" ? <Cadastro/> : <Lista/>}
+      <EstiloBotao onClick={this.checagem}>{tipoBotao}</EstiloBotao>
+    </ParaAcertarBotao>
   );
+}
 }
 
 export default App;
