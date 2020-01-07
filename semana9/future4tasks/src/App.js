@@ -1,5 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
+import Button from '@material-ui/core/Button';
+import {createStore} from "redux";
+import rootReducer from "../src/reducers/index";
+
+const store = createStore(rootReducer);
 
 const MainContainer = styled.div`
   background-color: #ECCFC3;
@@ -17,7 +22,8 @@ const Titulo = styled.h1`
 
 const DivTarefas = styled.div`
   background-color: #ECB8A5;
-  width: 350px;
+  width: 580px;
+  min-height: 100px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -25,29 +31,21 @@ const DivTarefas = styled.div`
 `;
 
 const InputStyle = styled.input`
-  width: 340px;
+  width: 530px;
+  height: 30px;
   margin-top: 10px;
   margin-bottom: 10px;
 `;
 
 const DivButtons = styled.div`
-  width: 345px;
-  display: flex;
-  justify-content: space-between;
+  width: 550px;
   padding: 2px;
-  margin-bottom: 5px;
-`;
-
-const ButtonStyle = styled.button`
-  width: 82px;
-  height: 35px;
-  background-color: #957D95;
-  border: 1px solid #957D95;
-  color: white;
+  display: flex;
+  justify-content: space-around;
 `;
 
 const FooterStyle = styled.footer`
-  width: 340px;
+  width: 530px;
   display: flex;
   justify-content: flex-end;
   padding: 2px;
@@ -55,26 +53,51 @@ const FooterStyle = styled.footer`
 
 function App() {
   return (
-    <MainContainer>
+    <Provider store={store}>
+      <MainContainer>
         <Titulo> 4Task </Titulo>
-        <DivTarefas>
-          <InputStyle 
-            type="text"
-            placeholder="O que tem que ser feito?"
-          />
-          <DivButtons>
-            <ButtonStyle> Completar todas </ButtonStyle>
-            <ButtonStyle> Todas </ButtonStyle>
-            <ButtonStyle> Pendentes </ButtonStyle>
-            <ButtonStyle> Completas </ButtonStyle>
-          </DivButtons>
-        </DivTarefas>
-      <FooterStyle> 
-        <h6> by Valquíria Moura </h6>
-      </FooterStyle>
-    </MainContainer>
-    
+          <DivTarefas>
+            <InputStyle 
+              type="text"
+              placeholder="O que tem que ser feito?"
+            />
+            <DivButtons>
+              <Button variant="contained">
+                Completar todas
+              </Button>
+              <Button variant="contained" >
+                Todas
+              </Button> 
+              <Button variant="contained" >
+                Pendentes
+              </Button>
+              <Button variant="contained" >
+                Completas
+              </Button> 
+            </DivButtons>
+          </DivTarefas>
+        <FooterStyle> 
+          <h6> by Valquíria Moura </h6>
+        </FooterStyle>
+      </MainContainer>
+    </Provider>, documentgetElementById("root")
   );
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    listaTarefas: state.tarefas.listaTarefas
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    listaTarefas: novaTarefa => dispatch(listaTarefasAction(tarefas))
+  };
+};
+
+export default connect(
+  null,
+  mapDispatchToProps)
+  (App);
+);
