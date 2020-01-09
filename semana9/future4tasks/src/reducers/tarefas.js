@@ -1,14 +1,24 @@
 const initialState = {
-    listaTarefas: []
+    todo: [
+        {
+          id: 1,
+          done: false,
+          text: "Usar Redux"
+        },
+        {
+          id: 2,
+          done: true,
+          text: "Preencher feedback do dia"
+        }
+      ],
 };
 
-const tarefas = (state = initialState, action) => {
+export const tarefasReducer = (state = initialState, action) => {
     switch (action.type) {
         case "ADICIONAR_TAREFA":
-            return {...state, listaTarefas: [...state.listaTarefas, action.payload.novaTarefa]};
+            const novaListaTarefas = [...state.todo, action.payload.tarefa]    
+            return {...state, todo: novaListaTarefas};
         default:
             return state;
     }
-};
-
-export default tarefas;
+}

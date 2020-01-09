@@ -1,8 +1,6 @@
 import {combineReducers} from "redux";
-import tarefas from "./tarefas"
+import {tarefasReducer} from "./tarefas"
 
-const rootReducer = combineReducers({
-    tarefas: tarefas
+export const rootReducer = combineReducers({
+    tarefas: tarefasReducer
 });
-
-export default rootReducer;
