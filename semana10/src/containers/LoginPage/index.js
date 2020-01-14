@@ -19,19 +19,21 @@ class LoginPage extends Component {
     super(props);
     this.state = {
       email: "",
-      password: ""
+      password: "",
     };
   }
 
   handleFieldChange = event => {
+    const { name, value } = event.target;
     this.setState({
-      [event.target.name]: event.target.value
+      [name]: value
     });
   };
 
+  
+
   render() {
     const { email, password } = this.state;
-    const LoginPage = props => {  };
     return (
       <LoginWrapper>
         <TextField
@@ -54,11 +56,9 @@ class LoginPage extends Component {
   }
 }
 
-function mapDispatchToProps(dispatch) {
-  return {
-      vaiParaListaViagens: () => dispatch(push("/trips/list"))
-  };
-}
+const mapDispatchToProps = (dispatch) => ({
+  vaiParaListaViagens: () => dispatch(push("/trips/list"))
+});
 
 export default connect(
   null,
