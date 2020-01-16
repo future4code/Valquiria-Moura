@@ -3,6 +3,48 @@ import { connect } from "react-redux";
 import { push } from "connected-react-router";
 import { routes } from "../Router";
 import { getTrips } from "../actions/viagens";
+import styled from "styled-components";
+import logo from "../imagens/logo.jpg";
+import Button from '@material-ui/core/Button';
+import {setViagemSelecionada} from "../actions/inscricoes";
+
+const MainContainer = styled.div`
+display:flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+margin: 10px;
+background-color: white;
+width: 99%;
+height: 99%;
+`;
+
+const DivBotoes = styled.div`
+width: 500px;
+height: 100px;
+display: flex;
+align-items: center;
+justify-content: space-evenly;
+margin-top: 20px;
+`;
+
+const Logo = styled.img`
+width: 300px;
+`;
+
+const DivListaViagens = styled.div`
+width: 90%;
+display: flex;
+margin: 15px;
+`;
+
+const DivViagem = styled.div`
+width: 90%;
+margin-top: 20px;
+margin: 10px;
+border: 1px solid grey;
+padding: 10px;
+`;
 
 class ListTripsPage extends React.Component {
   constructor(props){
@@ -12,34 +54,60 @@ class ListTripsPage extends React.Component {
     }
   }
 
-  componentDidMount(dispatch){
+  handleIrParaDetalhesDaViagem = (idDeViagem) => {
+    this.props.buscarCandidatos(idDeViagem)
+    this.props.irParaListaInscricoes()
+  }
+
+
+  componentDidMount(){
     this.props.buscarViagens()
   }
 
     render() {
-      const {criarViagem, listaInscricoes, voltar} = this.props;
+      const {criarViagem, irParaListaInscricoes, voltar, viagens} = this.props;
     return (
-      <div>
-        <h1>Lista de Viagens</h1>
+      <MainContainer> 
+            <Logo src={logo} alt="FutureX - logo"/>
+            <h1>Lista de Viagens</h1>
+            <DivListaViagens>
+              {viagens.map((viagem) => 
+                <DivViagem>
+                  <h4>{viagem.name}</h4>
+                  <p>Planeta: {viagem.planet}</p>
+                  <p>Data: {viagem.date}</p>
+                  <p>Descrição: {viagem.description}</p>
+                  <p>Duração: {viagem.durationInDays} dias</p>
+                  <Button variant="contained" onClick={() => this.handleIrParaDetalhesDaViagem(viagem.id) }>
+                    Ver inscritos
+                </Button>
+                </DivViagem>
+               )}
+              
+            </DivListaViagens>
+            <DivBotoes>
 
-        <div>
-          {this.props.viagens.map((viagem) =>
-            <p>{viagem.id}</p>
-          )}
-        </div>
+                <Button variant="contained" onClick={criarViagem}>
+                    Criar Viagem
+                </Button>
 
-        <button onClick={criarViagem}>Criar Viagem</button>
-        <button onClick={listaInscricoes}>Lista de Inscrições</button>
-        <button onClick={voltar}>Voltar</button>
+                <Button variant="contained" onClick={irParaListaInscricoes}>
+                    Lista de Inscrições
+                </Button>
 
-      </div>
+                <Button variant="contained" onClick={voltar}>
+                    Voltar
+                </Button>
+
+            </DivBotoes>
+        </MainContainer>
     );
   };
 }
   
   const mapStateToProps = state => {
     return {
-      viagens: state.viagem.todasAsViagens
+      viagens: state.viagens.todasAsViagens
     }
   };
 
@@ -47,8 +115,9 @@ class ListTripsPage extends React.Component {
     return {
         voltar: () => dispatch(push(routes.login)),
         criarViagem: () => dispatch(push(routes.criarviagem)),
-        listaInscricoes: () => dispatch(push(routes.listainscricoes)),
+        irParaListaInscricoes: () => dispatch(push(routes.listainscricoes)),
         buscarViagens: () => dispatch(getTrips()),
+        buscarCandidatos: (idDeViagem) => dispatch(setViagemSelecionada(idDeViagem)),
     }
   };
   

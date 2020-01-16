@@ -4,6 +4,7 @@ import { push } from "connected-react-router";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import styled from "styled-components";
+import logo from "../imagens/logo.jpg";
 
 const LoginWrapper = styled.form`
   width: 100%;
@@ -12,6 +13,11 @@ const LoginWrapper = styled.form`
   place-content: center;
   justify-items: center;
   display: grid;
+  background-color: white;
+`;
+
+const Logo = styled.img`
+width: 300px;
 `;
 
 class LoginPage extends Component {
@@ -22,6 +28,7 @@ class LoginPage extends Component {
       password: "",
     };
   }
+
 
   handleFieldChange = event => {
     const { name, value } = event.target;
@@ -36,6 +43,7 @@ class LoginPage extends Component {
     const { email, password } = this.state;
     return (
       <LoginWrapper>
+        <Logo src={logo} alt="FutureX - logo"/>
         <TextField
           onChange={this.handleFieldChange}
           name="email"
@@ -51,13 +59,15 @@ class LoginPage extends Component {
           value={password}
         />
         <Button onClick={this.props.vaiParaListaViagens}>Login</Button>
+        <Button onClick={this.props.voltar}>Voltar</Button>
       </LoginWrapper>
     );
   }
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  vaiParaListaViagens: () => dispatch(push("/trips/list"))
+  vaiParaListaViagens: () => dispatch(push("/trips/list")),
+  voltar: () => dispatch(push("/"))
 });
 
 export default connect(
