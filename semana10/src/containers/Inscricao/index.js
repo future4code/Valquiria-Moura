@@ -26,6 +26,7 @@ const Inscricao = (props) => {
         <MainContainer> 
             <Logo src={logo} alt="FutureX - logo"/>
             <h1> Inscrições </h1> 
+            
             <Button variant="contained" onClick={props.voltar}>
                 Voltar
             </Button>

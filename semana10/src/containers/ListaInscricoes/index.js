@@ -36,14 +36,6 @@ border: 1px solid grey;
 padding: 10px;
 `;
 
-const DivViagem = styled.div`
-width: 90%;
-margin-top: 20px;
-margin: 10px;
-border: 1px solid grey;
-padding: 10px;
-`;
-
 class ListaInscricoes extends React.Component {
   constructor(props) {
     super(props)
@@ -52,24 +44,25 @@ class ListaInscricoes extends React.Component {
     }
   }
 
-  componentDidMount(dispatch){
-    this.props.getTrip()
+  componentDidMount(){
+    this.props.getTrip(this.props.idDeViagemSelecionada)
   }
 
   render() {
-    const {viagens} = this.props;
+    const {candidatos} = this.props;
+    console.log(this.props.idDeViagemSelecionada)
     return (
       <MainContainer>
         <Logo src={logo} alt="FutureX - logo"/>
         <h1>Lista de Inscrições</h1>
         <DivListaInscricoes>
-        {/* {inscricoes.map((candidates) => 
+        {candidatos.map((candidatos) => 
           <DivInscricao>
-            <h4>{candidates.name}</h4>
-            <p>{candidates.age}</p>
-            <p>{candidates.country}</p>
-            <p>{candidates.profession}</p>
-            <p>{candidates.applicationText}</p>
+            <h4>{candidatos.name}</h4>
+            <p>{candidatos.age}</p>
+            <p>{candidatos.country}</p>
+            <p>{candidatos.profession}</p>
+            <p>{candidatos.applicationText}</p>
             <Button variant="contained">
               Aprovar
             </Button>
@@ -77,7 +70,7 @@ class ListaInscricoes extends React.Component {
               Reprovar
             </Button>
           </DivInscricao>  
-        )} */}
+        )}
         
             
                 
@@ -94,8 +87,8 @@ class ListaInscricoes extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    inscricoes: state.inscricoes.todasAsInscricoes,
-    viagens: state.viagens.todasAsViagens
+    candidatos : state.inscricoes.candidatos,
+    idDeViagemSelecionada: state.inscricoes.idDeViagemSelecionada,
   }
 };
 

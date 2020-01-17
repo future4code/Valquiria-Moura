@@ -91,10 +91,6 @@ class ListTripsPage extends React.Component {
                     Criar Viagem
                 </Button>
 
-                <Button variant="contained" onClick={irParaListaInscricoes}>
-                    Lista de Inscrições
-                </Button>
-
                 <Button variant="contained" onClick={voltar}>
                     Voltar
                 </Button>
