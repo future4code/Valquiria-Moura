@@ -7,6 +7,7 @@ import TextField from "@material-ui/core/TextField";
 import MenuItem from '@material-ui/core/MenuItem';
 import Button from "@material-ui/core/Button";
 import 'typeface-roboto';
+import { createTask } from "../../actions/createTask";
 
 const MainContainer = styled.div`
   width: 100%;
@@ -45,7 +46,7 @@ const styles = theme => ({
   },
 });
 
-const currencies = [
+const days = [
   {
     value: 0,
     label: 'Domingo',
@@ -77,31 +78,58 @@ const currencies = [
 ];
 
 class Planner extends React.Component {
-  state = {
-    currency: '',
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      text: "",
+      day: '',
+    }
+
+  }
+
+  handleFieldChange = event => {
+    this.setState({
+      [event.target.name]: event.target.value
+    });
   };
 
+  handleChange = name => event => {
+    this.setState({ 
+      [name]: event.target.value });
+  };
+
+  handleClickSendTask = (text, day) => {
+    this.props.createNewTask(text, day)
+    this.setState({
+        text: "",
+        day: "",
+    })
+}
+  
+
   render() {
-    const { classes } = this.props;
+    const { day } = this.state;
+    const { text } = this.setState
     return (
       <MainContainer>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500"></link>
         <h1> Planner Semanal </h1>
         <Inputs>
         <TextField
-          // onChange={this.handleFieldChange}
+          onChange={this.handleFieldChange}
           name="inserirTarefa"
           type="text"
           label="Insira aqui sua tarefa"
-          // value={password}
+          value={text}
         />
         <TextField
-          id="standard-select-currency"
+          id="standard-select-day"
           select
           label="Dia da semana"
           // className={classes.textField}
-          value={this.state.currency}
-          // onChange={this.handleChange('currency')}
+          value={day}
+          onChange={this.handleChange('day')}
           // SelectProps={{
           //   MenuProps: {
           //     className: classes.menu,
@@ -110,13 +138,13 @@ class Planner extends React.Component {
           helperText="Quando a sua tarefa deve ser realizada."
           margin="normal"
         >
-          {currencies.map(option => (
+          {days.map(option => (
             <MenuItem key={option.value} value={option.value}>
               {option.label}
             </MenuItem>
           ))}
         </TextField>
-        <Button>Adicionar tarefa</Button>
+        <Button onClick={() => this.handleClickSendTask(text, day)}> Adicionar tarefa </Button>
         </Inputs>
         
         
@@ -127,4 +155,9 @@ class Planner extends React.Component {
 
 }
 
-export default connect()(Planner);
+const mapDispatchToProps = dispatch => ({
+  createNewTask: (text, day) => dispatch(createTask(text, day))
+})
+
+
+export default connect(null, mapDispatchToProps)(Planner);

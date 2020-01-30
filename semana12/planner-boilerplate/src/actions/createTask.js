@@ -1,5 +1,5 @@
 import axios from "axios";
-import  fetchPosts  from "./getTasks";
+import  fetchTasks  from "./getTasks";
 
 const baseURL = "https://us-central1-missao-newton.cloudfunctions.net/generic/planner-bouman-valquiria"
 
@@ -9,22 +9,16 @@ export const createTask = (task, week) => async (dispatch) => {
         task: task,
         week: week,
     }
- //Parei aqui, perguntar à respeito dos headers. Na documentação não tem auth, posso fazer sem esse config então?
-    const config = {
-        headers: {
-          auth: token
-        }
-      }
     
     try {
-        const response = await axios.post(`${baseURL}/posts`, newPostInfo, config)
+        const response = await axios.post(`${baseURL}`, newTaskInfo)
         console.log(response)
-        dispatch(fetchPosts())
-        window.alert("Post enviado com sucesso!")
+        dispatch(fetchTasks())
+        window.alert("Tarefa incluída com sucesso!")
 
 
     } catch (error) {
         console.log(error)
-        window.alert("Não foi possível enviar o post")
+        window.alert("Não foi possível incluir sua tarefa!")
     }
 }
