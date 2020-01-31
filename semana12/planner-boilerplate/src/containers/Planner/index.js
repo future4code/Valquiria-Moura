@@ -1,13 +1,14 @@
 import React from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
-import classNames from 'classnames';
-import { withStyles } from '@material-ui/core/styles';
 import TextField from "@material-ui/core/TextField";
 import MenuItem from '@material-ui/core/MenuItem';
 import Button from "@material-ui/core/Button";
 import 'typeface-roboto';
 import { createTask } from "../../actions/createTask";
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+import Typography from '@material-ui/core/Typography';
 
 const MainContainer = styled.div`
   width: 100%;
@@ -27,24 +28,6 @@ const Inputs = styled.div`
   align-items: center;
   margin: 10px;
 `;
-
-const styles = theme => ({
-  container: {
-    display: 'flex',
-    flexWrap: 'wrap',
-  },
-  textField: {
-    marginLeft: theme.spacing.unit,
-    marginRight: theme.spacing.unit,
-    width: 200,
-  },
-  dense: {
-    marginTop: 19,
-  },
-  menu: {
-    width: 200,
-  },
-});
 
 const days = [
   {
@@ -77,6 +60,16 @@ const days = [
   },
 ];
 
+const PostCardContainer = styled.div`
+margin: 10px;
+display: flex;
+height: 200px;
+`;
+
+const LineCard = styled.hr`
+width: 150px;
+`;
+
 class Planner extends React.Component {
   constructor(props) {
     super(props);
@@ -90,7 +83,7 @@ class Planner extends React.Component {
 
   handleFieldChange = event => {
     this.setState({
-      [event.target.name]: event.target.value
+      "text": event.target.value
     });
   };
 
@@ -100,6 +93,7 @@ class Planner extends React.Component {
   };
 
   handleClickSendTask = (text, day) => {
+    console.log(text, day)
     this.props.createNewTask(text, day)
     this.setState({
         text: "",
@@ -109,45 +103,153 @@ class Planner extends React.Component {
   
 
   render() {
-    const { day } = this.state;
-    const { text } = this.setState
+    const { text, day } = this.state;
+    
     return (
       <MainContainer>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500"></link>
         <h1> Planner Semanal </h1>
+        
         <Inputs>
-        <TextField
-          onChange={this.handleFieldChange}
-          name="inserirTarefa"
-          type="text"
-          label="Insira aqui sua tarefa"
-          value={text}
-        />
-        <TextField
-          id="standard-select-day"
-          select
-          label="Dia da semana"
-          // className={classes.textField}
-          value={day}
-          onChange={this.handleChange('day')}
-          // SelectProps={{
-          //   MenuProps: {
-          //     className: classes.menu,
-          //   },
-          // }}
-          helperText="Quando a sua tarefa deve ser realizada."
-          margin="normal"
-        >
-          {days.map(option => (
-            <MenuItem key={option.value} value={option.value}>
-              {option.label}
-            </MenuItem>
-          ))}
-        </TextField>
+        
+          <TextField
+            onChange={this.handleFieldChange}
+            name="inserirTarefa"
+            type="text"
+            label="Insira aqui sua tarefa"
+            value={text}
+            />
+          
+          <TextField
+            id="standard-select-day"
+            select
+            label="Dia da semana"
+            value={day}
+            onChange={this.handleChange('day')}
+            helperText="Quando a sua tarefa deve ser realizada."
+            margin="normal"
+            >
+            {days.map(option => (
+              <MenuItem key={option.value} value={option.value}>
+                {option.label}
+              </MenuItem>
+            ))}
+          </TextField>
+
         <Button onClick={() => this.handleClickSendTask(text, day)}> Adicionar tarefa </Button>
+
         </Inputs>
         
+        <PostCardContainer>
+
+          <Card>
+            <CardContent>
+              
+              <Typography variant="h6">
+                Segunda-feira
+              </Typography>
+              
+              <LineCard />
+              
+              <Typography component="p">
+              </Typography>
+            
+            </CardContent>
+          </Card>
         
+          <Card>
+            <CardContent>
+              
+              <Typography variant="h6">
+                Terça-feira
+              </Typography>
+            
+              <LineCard />
+            
+              <Typography component="p">
+              </Typography>
+            
+            </CardContent>
+          
+          </Card>
+          
+          <Card>
+            <CardContent>
+              
+              <Typography variant="h6">
+                Quarta-feira
+              </Typography>
+            
+              <LineCard />
+            
+              <Typography component="p">
+              </Typography>
+          
+            </CardContent>
+          </Card>
+        
+        <Card>
+          <CardContent>
+            
+            <Typography variant="h6">
+              Quinta-feira
+            </Typography>
+            
+            <LineCard />
+            
+            <Typography component="p">
+            </Typography>
+          
+          </CardContent>
+        </Card>
+        
+        <Card>
+          <CardContent>
+            <Typography variant="h6">
+              Sexta-feira
+            </Typography>
+            
+            <LineCard />
+            
+            <Typography component="p">
+            </Typography>
+
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardContent>
+            
+            <Typography variant="h6">
+              Sábado
+            </Typography>
+            
+            <LineCard />
+            
+            <Typography component="p">
+            </Typography>
+          
+          </CardContent>
+        </Card>
+        
+        <Card>
+          <CardContent>
+            
+            <Typography variant="h6">
+              Domingo
+            </Typography>
+            
+            <LineCard />
+            
+            <Typography component="p">
+              Testando tarefa
+            </Typography>
+          
+          </CardContent>
+        </Card>
+      
+      </PostCardContainer>  
+
       </MainContainer>
     ); 
     
@@ -155,9 +257,13 @@ class Planner extends React.Component {
 
 }
 
+const mapStateToProps = state => ({
+  allTasks: state.taskReducer.allTasks
+})
+
 const mapDispatchToProps = dispatch => ({
   createNewTask: (text, day) => dispatch(createTask(text, day))
 })
 
 
-export default connect(null, mapDispatchToProps)(Planner);
+export default connect(mapStateToProps, mapDispatchToProps)(Planner);

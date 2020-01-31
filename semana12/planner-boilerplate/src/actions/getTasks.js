@@ -2,18 +2,18 @@ import axios from "axios";
 
 const baseURL = "https://us-central1-missao-newton.cloudfunctions.net/generic/planner-bouman-valquiria"
 
-export const setTask = (text) => ({
-    type: 'SET_TASK',
+export const setTasks = (allTasks) => ({
+    type: 'SET_TASKS',
     payload: {
-        text,
+        allTasks,
     }
 })
 
-export const getTasks = (id) => async (dispatch) => {
+export const getTasks = () => async (dispatch) => {
     
     try {
-        const response = await axios.get(`${baseURL}/${id}`)
-        dispatch(setTask(response.data.text))
+        const response = await axios.get(`${baseURL}`)
+        dispatch(setTasks(response.data))
 
     } catch (error) {
         window.alert("Ocorreu um erro.")

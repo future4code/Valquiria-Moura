@@ -1,19 +1,19 @@
 import axios from "axios";
-import  fetchTasks  from "./getTasks";
+import  getTasks  from "./getTasks";
 
 const baseURL = "https://us-central1-missao-newton.cloudfunctions.net/generic/planner-bouman-valquiria"
 
-export const createTask = (task, week) => async (dispatch) => {
+export const createTask = (text, day) => async (dispatch) => {
     
     const newTaskInfo = {
-        task: task,
-        week: week,
+        text: text,
+        day: day,
     }
     
     try {
         const response = await axios.post(`${baseURL}`, newTaskInfo)
         console.log(response)
-        dispatch(fetchTasks())
+        dispatch(getTasks(response.data.id))
         window.alert("Tarefa incluída com sucesso!")
 
 
