@@ -1,0 +1,14 @@
+{
+  "name": "mycalculator",
+  "version": "1.0.0",
+  "description": "Calculadora simples",
+  "main": "myCalculator.js",
+  "scripts": {
+    "start": "node myCalculator.js"
+  },
+  "keywords": [
+    "calculadora"
+  ],
+  "author": "Valquiria Moura",
+  "license": "ISC"
+}

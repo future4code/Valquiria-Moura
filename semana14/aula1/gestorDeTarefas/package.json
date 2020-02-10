@@ -1,0 +1,15 @@
+{
+  "name": "gestordetarefas",
+  "version": "1.0.0",
+  "description": "Gestor de Tarefas",
+  "main": "gestorDeTarefas.js",
+  "scripts": {
+    "start": "node gestorDeTarefas.js"
+  },
+  "keywords": [
+    "tarefas",
+    "gestor"
+  ],
+  "author": "Valquiria Moura",
+  "license": "ISC"
+}
