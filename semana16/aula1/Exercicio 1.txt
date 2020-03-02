@@ -1,0 +1,53 @@
+EXERCICIO 1
+
+USE exercicios;
+DESCRIBE actors;
+
+SELECT first_name, last_name
+FROM actors
+WHERE last_name LIKE "a%" 
+OR last_name LIKE "%a" 
+OR last_name LIKE "%a%"
+;
+
+SELECT last_name
+FROM actors
+WHERE first_name LIKE "DAN"
+OR first_name LIKE "JULIA"
+;
+
+SELECT first_name, last_name
+FROM actors
+WHERE first_name LIKE "ANGELINA"
+OR last_name LIKE "b%" 
+OR last_name LIKE "%b" 
+OR last_name LIKE "%b%"
+;
+
+USE `bouman-valquiria`;
+
+CREATE TABLE actors (
+	actor_id int PRIMARY KEY,
+    first_name varchar(45) NOT NULL,
+    last_name varchar(45) NOT NULL
+);
+
+INSERT INTO actors (actor_id, first_name, last_name)
+VALUES 
+	(1, "PYONG", "LEE"),
+	(2, "FELIPE", "PRIOR"),
+    (3, "MANU", "GAVASSI"),
+    (4, "FLAYS", "LANE"),
+    (5, "BABU", "SANTANA"),
+    (6, "GUI", "NAPOLITANO"),
+    (7, "MARCELA", "MCGOWAN"),
+    (8, "GIZELLY", "BICALHO"),
+    (9, "DANIEL", "LENHARDT"),
+    (10, "VICTOR HUGO", "TEIXEIRA"),
+    (11, "RAFA", "KALIMANN"),
+    (12, "THELMA", "ASSIS"),
+    (13, "GABI", "MARTINS"),
+    (14, "MARI", "GONZALEZ")
+    ;
+    
+SELECT * FROM actors;
