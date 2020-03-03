@@ -1,0 +1,26 @@
+mission {
+    type: (enum)
+        webMission:
+            patron
+        mobileMission:
+            number
+    startDate
+    endDate
+    teachersList[
+        teacher {
+            name
+            email
+            birthDate
+            specialties: [] (enum)
+        }
+    ]
+    studentsList[
+        student {
+            name
+            email
+            birthDate
+        }
+    ]
+}
+
+f4system = [missions]
