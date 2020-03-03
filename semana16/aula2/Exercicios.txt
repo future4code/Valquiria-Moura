@@ -1,0 +1,105 @@
+EXERCICIO 1
+
+USE exercicios;
+DESCRIBE city;
+
+SELECT Name, Population FROM city
+ORDER BY Population DESC
+LIMIT 5
+;
+
+SELECT AVG(Population), District FROM city
+GROUP BY District
+;
+
+SELECT COUNT(Name), District FROM city
+GROUP BY District
+;
+
+SELECT COUNT(Name) AS QtdeCidades, countryCode FROM city
+GROUP BY countryCode
+ORDER BY QtdeCidades DESC
+LIMIT 10
+;
+
+EXERCICIO 2
+
+USE exercicios;
+DESCRIBE country;
+
+SELECT Name, Population from country
+WHERE Population > 100000
+LIMIT 100
+;
+
+SELECT COUNT(*) from country
+WHERE Population > 5000000
+;
+
+SELECT SUM(Population) AS "Soma de população" FROM country
+WHERE Continent LIKE "Asia"
+;
+
+SELECT COUNT(GovernmentForm) FROM country
+WHERE GovernmentForm LIKE "Republic"
+OR GovernmentForm LIKE "Constitutional Monarchy"
+;
+
+SELECT COUNT(GovernmentForm) AS Contagem, GovernmentForm FROM country
+GROUP BY GovernmentForm
+ORDER BY Contagem DESC
+LIMIT 1
+;
+
+SELECT AVG(Population) AS "Média População" , Continent FROM country
+GROUP BY Continent
+;
+
+SELECT Name, IndepYear FROM country
+WHERE IndepYear IS NOT NULL
+ORDER BY IndepYear ASC
+LIMIT 10
+;
+
+SELECT AVG(LifeExpectancy), LOWER(Continent) FROM country
+GROUP BY Continent
+;
+
+SELECT Continent, SurfaceArea FROM country
+ORDER BY SurfaceArea DESC
+LIMIT 3
+;
+
+EXERCÍCIO 3
+
+USE `bouman-valquiria`;
+DESCRIBE films;
+
+SELECT * FROM films;
+
+INSERT INTO films (film_id, title, description, release_year, length, rating, special_features)
+VALUES 
+	(6, "A insustentável leveza de um elefante", "Drama de um elefante maneiro", 2000, 2, 'G', 'Behind the Scenes'),
+	(7, "Se meu fusca andasse", "Do diretor de Velozes e Furiosos", 2002, 1, 'PG', 'Deleted Scenes'),
+    (8, "Chuck Norris e a Pedra Filosofal", "Da série do bruxinho famoso", 2004, 2, 'PG-13', 'Commentaries'),
+    (9, "O Povo contra Bart Simpson", "A mais famosa audiência", 2006, 1, 'R', 'Trailers'),
+    (10, "Meu tio, filho único", "Baseado em fatos reais", 2008, 2, 'NC-17', 'Trailers')
+    ;
+
+ALTER TABLE films
+ADD watched BOOL DEFAULT FALSE NOT NULL
+;
+
+UPDATE films
+SET watched = TRUE
+WHERE rating = "PG-13"
+;
+
+ALTER TABLE films
+ADD lucky_number INT DEFAULT 0 NOT NULL 
+;
+
+UPDATE films
+SET lucky_number = FLOOR(RAND()*(1000-1+1)+1)
+WHERE lucky_number = 0 
+;
