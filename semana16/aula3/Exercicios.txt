@@ -1,0 +1,113 @@
+EXERCICIO 1
+
+CREATE TABLE autores (
+ id INT,
+ primeiro_nome VARCHAR(255),
+ ultimo_nome VARCHAR(255),
+ nacionalidade VARCHAR(255),
+ PRIMARY KEY (id)
+);
+
+CREATE TABLE editoras (
+ id INT,
+ nome VARCHAR(255),
+ cidade VARCHAR(255),
+ fundacao DATE,
+ PRIMARY KEY (id)
+);
+
+CREATE TABLE livros (
+ id INT,
+ titulo VARCHAR(255),
+ autor_id INT,
+ editora_id INT,
+ ano DATE,
+ PRIMARY KEY (id),
+ FOREIGN KEY (autor_id) REFERENCES autores(id),
+ FOREIGN KEY (editora_id) REFERENCES editoras(id)
+);
+
+CREATE TABLE usuarios (
+ id INT,
+ primeiro_nome VARCHAR(255),
+ ultimo_nome VARCHAR(255),
+ nacionalidade VARCHAR(255),
+ data_nascimento DATE,
+ PRIMARY KEY (id)
+);
+
+CREATE TABLE usuarios_livros (
+    usuario_id INT,
+    livro_id INT,
+    PRIMARY KEY (usuario_id , livro_id),
+    FOREIGN KEY (usuario_id)
+        REFERENCES usuarios (id),
+    FOREIGN KEY (livro_id)
+        REFERENCES livros (id)
+);
+
+EXERCICIO 3
+
+SELECT primeiro_nome, titulo FROM autores
+JOIN livros
+ON autores.id = livros.id
+WHERE primeiro_nome LIKE 'Dan'
+;
+
+SELECT CONCAT (primeiro_nome, ' ', ultimo_nome) AS 'Nome Completo Autor', titulo FROM autores
+JOIN livros
+ON autores.id = livros.id
+WHERE primeiro_nome LIKE 'a%'
+;
+
+SELECT primeiro_nome, COUNT(autor_id) AS 'Qtde Livros' FROM autores
+JOIN livros
+ON autores.id = livros.id
+GROUP BY primeiro_nome
+ORDER BY primeiro_nome ASC
+;
+
+SELECT titulo, COUNT(livro_id) AS qtde_alugueis FROM livros
+JOIN usuarios_livros ON livros.id = usuarios_livros.livro_id
+JOIN usuarios ON usuarios.id = usuarios_livros.usuario_id
+GROUP BY titulo
+ORDER BY qtde_alugueis DESC
+LIMIT 1
+;
+
+SELECT primeiro_nome, COUNT(livro_id) AS num_livros FROM livros
+JOIN usuarios_livros ON livros.id = usuarios_livros.livro_id
+JOIN usuarios ON usuarios.id = usuarios_livros.usuario_id
+GROUP BY primeiro_nome
+ORDER BY num_livros DESC
+;
+
+SELECT titulo, nome, fundacao FROM livros
+JOIN editoras
+ON livros.editora_id = editoras.id
+WHERE YEAR(fundacao) < 1990
+;
+
+SELECT primeiro_nome, data_nascimento FROM livros
+JOIN usuarios_livros ON livros.id = usuarios_livros.livro_id
+JOIN usuarios ON usuarios.id = usuarios_livros.usuario_id
+WHERE titulo LIKE 'Alchemist,The:A Fable About Following Your Dream'
+ORDER BY YEAR(data_nascimento) 
+LIMIT 1
+;
+
+SELECT nome, COUNT(editora_id) AS livros_alugados FROM livros
+JOIN editoras ON livros.editora_id = editoras.id
+JOIN usuarios_livros ON livros.id = usuarios_livros.livro_id
+JOIN usuarios ON usuarios.id = usuarios_livros.usuario_id
+WHERE YEAR(data_nascimento) < 2000
+GROUP BY nome
+ORDER BY livros_alugados DESC
+LIMIT 2
+;
+
+SELECT primeiro_nome, YEAR(data_nascimento), titulo, YEAR(ano) FROM livros
+JOIN usuarios_livros ON livros.id = usuarios_livros.livro_id
+JOIN usuarios ON usuarios.id = usuarios_livros.usuario_id
+WHERE YEAR(data_nascimento) > YEAR(ano)
+;
