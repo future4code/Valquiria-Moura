@@ -1,0 +1,26 @@
+USE `bouman-valquiria`;
+DESCRIBE usuariosToDoList;
+DESCRIBE tarefasToDoList;
+
+CREATE TABLE usuariosToDoList (
+ id INT,
+ nome VARCHAR(255) NOT NULL,
+ nickname VARCHAR(255) UNIQUE NOT NULL,
+ email VARCHAR(255) UNIQUE NOT NULL,
+ data_nasc DATE NOT NULL,
+ PRIMARY KEY (id)
+);
+
+ALTER TABLE usuariosToDoList
+MODIFY id INT auto_increment;
+
+CREATE TABLE tarefasToDoList (
+ id INT AUTO_INCREMENT,
+ descricao VARCHAR(255) NOT NULL,
+ data_limite DATE NOT NULL,
+ pedinte_id INT NOT NULL,
+ responsavel_id INT,
+ PRIMARY KEY (id),
+ FOREIGN KEY (pedinte_id) REFERENCES usuariosToDoList(id),
+ FOREIGN KEY (responsavel_id) REFERENCES usuariosToDoList(id)
+);
