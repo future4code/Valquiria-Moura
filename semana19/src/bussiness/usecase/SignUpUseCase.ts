@@ -1,6 +1,6 @@
 import {v4} from 'uuid'
-import { User } from '../../entities/User'
-import { UserDataBase } from '../../../data/UserDataBase'
+import { User } from '../entities/User'
+import { UserDataBase } from '../../data/UserDataBase'
 import * as bcrypt from 'bcrypt'
 
 interface SignUpInput {

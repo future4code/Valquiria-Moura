@@ -16,10 +16,18 @@ export class UserDataBase {
   }
 
   async createUser(user: User) {
-    await this.connection.insert ( { 
-      id: user.getId(),
-      email: user.getEmail(),
-      password: user.getPassword()
-    }).into ('futurebook_users')
+    await this.connection.raw (  
+      `INSERT INTO futurebook_users VALUES
+      ("${user.getId()}", "${user.getName()}", "${user.getEmail()}", "${user.getPassword()}")`
+    )
+}
+
+  async getUserByEmail(email:string): Promise<User | undefined> {
+    const user = await this.connection.select ('*').from('users').where({email})
+    if(!user[0]) {
+      return undefined
+    }
+    return new User(user[0].id, user[0].name, user[0].email, user[0].password)
+    
   }
 }
