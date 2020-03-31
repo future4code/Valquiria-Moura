@@ -1,0 +1,55 @@
+EXERCÍCIO 1
+
+a. Aparentemente eu entendi o código. Conversei com alguns colegas e ao que tudo indica, está OK!
+
+b. 
+{
+  "statusCode": 400,
+  "body": "{\"message\":\"Missing input\"}"
+}
+
+c.
+{
+  "statusCode": 400,
+  "body": "{\"message\":\"Missing input\"}"
+}
+
+d.
+{
+  "statusCode": 400,
+  "body": "{\"message\":\"Missing email\"}"
+}
+
+e.
+{
+  "statusCode": 400,
+  "body": "{\"message\":\"Invalid password\"}"
+}
+
+f.
+{
+  "statusCode": 200,
+  "body": "{\"message\":\"User is correct\"}"
+}
+
+g.
+if (!user.email) {
+    return {
+      statusCode: 400,
+      body: JSON.stringify({ message: "Missing email" })
+    };
+  }
+
+Mudando este StatusCode para 422
+
+h.
+{
+  "user": {
+		"info": {
+			"name": "Astrodev",
+			"email": "astrodev@f4.com.br",
+			"password": "123456"
+		}
+  }
+}
+
