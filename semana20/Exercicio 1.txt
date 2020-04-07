@@ -1,0 +1,44 @@
+EXERCÍCIO 1
+
+1. 
+Primeiro precisamos nos logar no AWS. 
+Clicar em Services e escolher o EC2.
+Na barra superior, canto direito, colocamos a localização geográfica desejada.
+Clicamos em Instances e tem todas as nossas máquinas virtuais criadas.
+Clica em Launch Instance. 
+Seleciona a máquina que deseja usar.
+Escolhe o tipo da máquina 
+Pular etapas clicando em Review and Launch.
+Confere as informações.
+Clica em Launch
+Selecionar Create a new key pair
+Preencher o Key pair name.
+Clicar em Download Key Pair
+Clicar em Launch Instances
+Clica em View Instances e ele volta pra tela das Instances
+Dessa forma nós criamos a máquina virtual.
+
+No terminal
+Vamos até a pasta em que salvamos a key e damos o comando chmod 400 key.pem
+(Isso só precisa ser feito 1 vez)
+E acessamos a máquina através do comando
+ssh -i chaves.pem ubuntu@ip_da_maquina_virtual
+Pegamos o esse IP na página de Instances. Nas infos que ficam na parte inferior da tela tem o IP.
+Instalar o nvm para colocar o Node.
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
+ctrl+D
+Entra de novo pelo ssh
+E dá nvm -v pra conferir que o nvm foi instalado
+Vai aparecer a versão do nvm
+
+Dar npx create-react-app para instalar o React
+A pasta react-teste será criada, entrar nela.
+Dar npm run start
+Clicar no launch-wizard
+No Inbound rules colocar 3000 na porta e Anywhere. Save Rules.
+Agora o Localhost:3000 da virtual será liberado.
+E dessa forma acabamos de configurar as portas.
+Se copiarmos a URL e :3000 no final, o React roda
+
+
+3. ssh -i ec2-valquiria-moura.pem ubuntu@34.204.74.251
